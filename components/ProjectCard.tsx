@@ -7,7 +7,8 @@ type Project = {
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
-  type: "ci-cd" | "iac" | "observability";
+  // type: "ci-cd" | "iac" | "observability";
+  type: string;
   codeSnippet?: string;
 };
 

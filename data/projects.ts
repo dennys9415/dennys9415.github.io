@@ -1,6 +1,15 @@
-// src/data/projects.ts
+export type Project = {
+  slug: string;
+  title: string;
+  summary: string;
+  tags: string[];
+  type: string;
+  githubUrl: string;
+  liveUrl?: string;
+  codeSnippet?: string; // opcional
+};
 
-const projects = [
+const projects: Project[] = [
   {
     slug: "singularity-box",
     title: "Singularity Box - IT & Cloud Solutions",
@@ -20,7 +29,7 @@ const projects = [
     ],
     type: "fullstack-cloud",
     githubUrl: "",
-    liveUrl: "https://singularitybox.com",
+    liveUrl: "https://thesingularitybox.com",
   },
   {
     slug: "chat-app-realtime",
@@ -64,6 +73,23 @@ const projects = [
     ],
     type: "devops",
     githubUrl: "",
+    codeSnippet: `# Ejemplo de pipeline GitHub Actions
+name: ci-cd
+on: [push]
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci && npm test
+      - name: Build Docker
+        run: docker build -t ghcr.io/youruser/app:$GITHUB_SHA .
+      - name: Push Image
+        run: echo $CR_PAT | docker login ghcr.io -u youruser --password-stdin
+      - run: docker push ghcr.io/youruser/app:$GITHUB_SHA`,
   },
   {
     slug: "vpn-secure-networking",
